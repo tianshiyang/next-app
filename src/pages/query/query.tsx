@@ -1,12 +1,10 @@
-import { withRouter } from "next/router"
+import { useRouter } from "next/router"
 import Head from 'next/head'
+import GlobleMenu from '@/components/globalMenu'
 
-interface Query {
-  name: string,
-  age: number
-}
-function test(props: any) {
-  const query: Query = props.router.query
+export default function query() {
+  const router = useRouter()
+  const query = router.query
   return (
     <>
       <Head>
@@ -16,11 +14,10 @@ function test(props: any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <GlobleMenu />
         <h1 className="testH1">这是测试页面</h1>
         <h2>路由中的参数 -- 姓名 {query.name} -- 年龄 {query.age} </h2>
       </main>
     </>
   )
 }
-
-export default withRouter(test)
