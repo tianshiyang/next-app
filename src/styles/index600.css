@@ -1,4 +1,12 @@
 @media screen and (max-width: 600px) {
+  html {
+    font-size: 12px;
+  }
+  .title {
+    background: #EEEEEE;
+    line-height: 3rem;
+    height: 3rem;
+  }
   .testH1 {
     color: yellow
   }

@@ -18,7 +18,7 @@ export default function ActionsPage() {
   return (
     <>
       <GlobalMenu />
-      <h3>子组件传来的数据：姓名: { formValues.username }, 密码: { formValues.password }, 是否记住我: { formValues.remember ? '是' : "否" }</h3>
+      <div className="title">子组件传来的数据：姓名: { formValues.username }, 密码: { formValues.password }, 是否记住我: { formValues.remember ? '是' : "否" }</div>
       <ActionsComponent formValues={formValues} handleFormSubmit={ handleFormSubmit }>
         <h1 slot="head">表单头部</h1>
         <h1 slot="footer">表单底部</h1>
