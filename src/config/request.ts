@@ -9,7 +9,7 @@ if( process.env.NODE_ENV === 'production' ) {
 
 const api = axios.create({
   baseURL,
-  timeout: 3000
+  timeout: 60000
 })
 
 // 拦截器
