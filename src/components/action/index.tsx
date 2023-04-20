@@ -1,5 +1,5 @@
-import { Form, Input, Button, Checkbox, Select } from 'antd';
-import { useState } from 'react';
+import { Form, Input, Button, Checkbox, Select, Modal } from 'antd';
+import { useState, forwardRef } from 'react';
 
 interface FormValues {
   username: string
@@ -8,7 +8,7 @@ interface FormValues {
   address?: string
 }
 
-export default function Action({ formValues, handleFormSubmit, children} : { formValues: FormValues, handleFormSubmit: (value: FormValues) => void, children: any }) {
+function Action({ formValues, handleFormSubmit, children} : { formValues: FormValues, handleFormSubmit: (value: FormValues) => void, children: any }, ref : any) {
   const [formValuesState, setFormValueState] = useState(formValues)
 
   const renderHeader = () => {
@@ -25,6 +25,20 @@ export default function Action({ formValues, handleFormSubmit, children} : { for
         { children.filter((res: any) => res.props.slot == "footer") }
       </>
     )
+  }
+
+  const [ isModalOpen, setIsModalOpen ] = useState(false)
+
+  const handleOk = () => {
+    setIsModalOpen(false)
+  }
+
+  const handleCancel = () => {
+    setIsModalOpen(false)
+  }
+
+  const childFun = () => {
+    setIsModalOpen(true)
   }
 
   const onFinish = (values: any) => {
@@ -90,10 +104,19 @@ export default function Action({ formValues, handleFormSubmit, children} : { for
             <Button type="primary" htmlType="submit">
               提交
             </Button>
+            <Button ref={ ref } type="primary" danger onClick={childFun}>子组件方法</Button>
           </Form.Item>
         </Form>
         { renderFooter() }
       </div>
+
+      <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
     </>
   )
 }
+
+export default forwardRef(Action)
