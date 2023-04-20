@@ -8,6 +8,20 @@ import { getUser } from "./api/index"
 
 function Home({ user: { message } }: { user: { message: string } }) {
 
+  function IsPhone() {
+    var info = navigator.userAgent;
+    // 通过正则表达式的test方法判断是否包含“Mobile”字符串
+    var isPhone = /mobile/i.test(info);
+    // 如果包含“Mobile”（是手机设备）则返回true
+    return isPhone;
+  }
+
+  useEffect(() => {
+    if (IsPhone()) {
+      // location.href = "https://www.baidu.com"
+    }
+  }, [])
+
   const [messageState, setMessageState] = useState(message)
 
   const [ count, setCount ] = useState(1)
