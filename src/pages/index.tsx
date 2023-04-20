@@ -26,12 +26,6 @@ function Home({ user: { message } }: { user: { message: string } }) {
 
   const [ count, setCount ] = useState(1)
 
-  useEffect(() => {
-    getUser({name: 1}).then((res) => {
-      setMessageState(res.message)
-    })
-  }, [count])
-
   const renderResponseView = () => {
     return (
       <>
@@ -73,7 +67,7 @@ function Home({ user: { message } }: { user: { message: string } }) {
           <Button type="primary" onClick={ goTestPage }>跳转到「路由传参」</Button>
           <Button type="primary" danger onClick={ handleCountAdd }>Count</Button>
         </Space>
-        { renderResponseView() }
+        { messageState ? renderResponseView() : null }
       </main>
     </>
   )
@@ -85,7 +79,7 @@ export async function getStaticProps() {
     props: {
       user,
     },
-    revalidate: 10, // In seconds
+    revalidate: 10
   }
 }
 
