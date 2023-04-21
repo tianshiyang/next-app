@@ -20,6 +20,7 @@ function Home({ user: { message } }: { user: { message: string } }) {
     if (IsPhone()) {
       // location.href = "https://www.baidu.com"
     }
+    getUser({name: 1})
   }, [])
 
   const [messageState, setMessageState] = useState(message)
@@ -37,6 +38,12 @@ function Home({ user: { message } }: { user: { message: string } }) {
       </>
     )
   }
+
+  useEffect(() => {
+    getUser({name: 1}).then((res) => {
+      setMessageState(res.message)
+    })
+  }, [count])
   
   const handleCountAdd = () => {
     setCount(count + 1) 
