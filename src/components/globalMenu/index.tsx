@@ -29,7 +29,7 @@ const items: MenuProps['items'] = [
 ];
 
 
-export default function GlobleMenu() {
+export default function GlobleMenu({children}: {children: any}) {
   const router = useRouter()
 
   // 路由和菜单的Key对应
@@ -51,6 +51,7 @@ export default function GlobleMenu() {
   return (
     <>
       <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+      {children}
     </>
   )
 }

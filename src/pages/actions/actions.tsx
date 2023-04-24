@@ -1,4 +1,4 @@
-import GlobalMenu from "@/components/globalMenu/index"
+// import GlobalMenu from "@/components/globalMenu/index"
 import ActionsComponent from "@/components/action/index"
 import { useState, useRef } from "react"
 import { Button, Modal } from "antd"
@@ -25,7 +25,6 @@ export default function ActionsPage() {
 
   return (
     <>
-      <GlobalMenu />
       <div className="title">子组件传来的数据：姓名: { formValues.username }, 密码: { formValues.password }, 是否记住我: { formValues.remember ? '是' : "否" }</div>
       <Button type="primary" onClick={ handleUseChildEvent }>调用子组件方法</Button>
       <ActionsComponent ref={ ActionsComponentRef } formValues={formValues} handleFormSubmit={ handleFormSubmit }>

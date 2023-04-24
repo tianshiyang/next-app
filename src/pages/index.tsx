@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import GlobleMenu from '@/components/globalMenu'
 import { useRouter } from "next/router"
 import { Button, Space, Result } from 'antd';
 import { useEffect, useState } from "react"
@@ -69,7 +68,6 @@ function Home({ user: { message } }: { user: { message: string } }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <GlobleMenu />
         <Space wrap className='m20'>
           <Button type="primary" onClick={ goTestPage }>跳转到「路由传参」</Button>
           <Button type="primary" danger onClick={ handleCountAdd }>Count</Button>
